@@ -4,9 +4,20 @@
  <meta charset="UTF-8">
  <meta http-equiv="X-UA-Compatible" content="IE=edge">
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <title>Document</title>
+ <title>Weather Dashboard</title>
+ <link rel="stylesheet" href="./assets/style.css">
 </head>
 <body>
- 
+ <div class="container">
+        <h1>Weather Dashboard</h1>
+        <form id="search-form">
+            <input type="text" id="search-input" placeholder="Search for a city...">
+            <button type="submit">Search</button>
+        </form>
+        <div id="current-weather"></div>
+        <h2>5-Day Forecast</h2>
+        <div id="forecast" class="forecast-container"></div>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>
