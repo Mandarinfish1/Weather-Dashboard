@@ -30,7 +30,6 @@ async function fetchWeather(city) {
       }
       localStorage.setItem("savedCities", JSON.stringify(savedCities)) // Save the array of cities to localStorage
       displaySavedCities() // Update the list of saved cities on the webpage
-
       displayCurrentWeather(data)
       fetchForecast(city)
     } else {
@@ -45,8 +44,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-
-
 //Using template literals to update values for current weather temp, humidity, wind speed for city submitted.
 function displayCurrentWeather(data) {
     const weatherIconUrl = `https://openweathermap.org/img/wn/${data.weather[0].icon}.png`;
@@ -59,7 +56,7 @@ function displayCurrentWeather(data) {
     `;
     currentWeather.innerHTML = html;
     //Unhiding the currentWeather to make it visible.
-   // currentWeather.classList.remove('hidden');
+    currentWeather.classList.remove('hidden');
 }
 //Fetch the 5-day forecast data for the submitted city.
 async function fetchForecast(city) {
@@ -85,7 +82,7 @@ function displayForecast(forecastData) {
     });
     forecast.innerHTML = html;
     //Unhiding the forecast heading once the forecast data has been fetched and displayed.
-    //document.getElementById('forecast-heading').classList.remove('hidden');
+    document.getElementById('forecast-heading').classList.remove('hidden');
     }
 
     function displaySavedCities() {

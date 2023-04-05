@@ -94,9 +94,9 @@ button:hover {
 }
 
 
-/*.hidden {
+.hidden {
     display: none;
-}*/
+}
 
 
 .weather-icon {
