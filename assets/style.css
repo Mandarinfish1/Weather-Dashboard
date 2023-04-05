@@ -79,6 +79,13 @@ button:hover {
     border-radius: 5px;
 }  
 
+#saved-cities   {
+    background-color: lightgrey;
+    padding: 20px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+   
+}
 
 .forecast-container {
     display: flex;
@@ -87,9 +94,9 @@ button:hover {
 }
 
 
-.hidden {
+/*.hidden {
     display: none;
-}
+}*/
 
 
 .weather-icon {

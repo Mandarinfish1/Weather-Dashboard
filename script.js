@@ -22,13 +22,31 @@ searchForm.addEventListener('submit', event => {
 async function fetchWeather(city) {
     const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=imperial`); 
     const data = await response.json();
-    if (data.cod === 200) { //if API request successful (code 200) then executes displayCurrentWeather function. 
-        displayCurrentWeather(data);
-        fetchForecast(city);
+    if (data.cod === 200) {
+      //if API request successful (code 200) then executes displayCurrentWeather function.
+      let savedCities = JSON.parse(localStorage.getItem("savedCities")) || []
+      if (!savedCities.includes(city)) {
+        savedCities.push(city)
+      }
+      localStorage.setItem("savedCities", JSON.stringify(savedCities)) // Save the array of cities to localStorage
+      displaySavedCities() // Update the list of saved cities on the webpage
+
+      displayCurrentWeather(data)
+      fetchForecast(city)
     } else {
         alert('City not found. Please try again.');
     }
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+  const lastSearchedCity = localStorage.getItem("lastSearchedCity")
+  if (lastSearchedCity) {
+    fetchWeather(lastSearchedCity);
+  }
+});
+
+
+
 //Using template literals to update values for current weather temp, humidity, wind speed for city submitted.
 function displayCurrentWeather(data) {
     const weatherIconUrl = `https://openweathermap.org/img/wn/${data.weather[0].icon}.png`;
@@ -41,7 +59,7 @@ function displayCurrentWeather(data) {
     `;
     currentWeather.innerHTML = html;
     //Unhiding the currentWeather to make it visible.
-    currentWeather.classList.remove('hidden');
+   // currentWeather.classList.remove('hidden');
 }
 //Fetch the 5-day forecast data for the submitted city.
 async function fetchForecast(city) {
@@ -67,8 +85,23 @@ function displayForecast(forecastData) {
     });
     forecast.innerHTML = html;
     //Unhiding the forecast heading once the forecast data has been fetched and displayed.
-    document.getElementById('forecast-heading').classList.remove('hidden');
+    //document.getElementById('forecast-heading').classList.remove('hidden');
     }
+
+    function displaySavedCities() {
+      const savedCities = JSON.parse(localStorage.getItem("savedCities")) || []
+      const savedCitiesContainer = document.getElementById("saved-cities")
+
+      let html = ""
+      savedCities.forEach((city) => {
+        html += `<li>${city}</li>`
+      })
+
+      savedCitiesContainer.innerHTML = html
+    }
+    document.addEventListener("DOMContentLoaded", () => {
+      displaySavedCities()
+    });
 
 
 
