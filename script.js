@@ -20,7 +20,7 @@ searchForm.addEventListener('submit', event => {
 //Fetching weather data for a submitted city.
 //Using async/await to wait for fetch request to complete before continuing. 
 async function fetchWeather(city) {
-    const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`); 
+    const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=imperial`); 
     const data = await response.json();
     if (data.cod === 200) { //if API request successful (code 200) then executes displayCurrentWeather function. 
         displayCurrentWeather(data);
@@ -35,7 +35,7 @@ function displayCurrentWeather(data) {
     const html = `
         <h2>${data.name} (${new Date().toLocaleDateString()})</h2>
         <img src="${weatherIconUrl}" alt="${data.weather[0].description}" class="weather-icon">
-        <p>Temperature: ${data.main.temp}°C</p>
+        <p>Temperature: ${data.main.temp}°F</p>
         <p>Humidity: ${data.main.humidity}%</p>
         <p>Wind Speed: ${data.wind.speed} m/s</p>
     `;
@@ -45,7 +45,7 @@ function displayCurrentWeather(data) {
 }
 //Fetch the 5-day forecast data for the submitted city.
 async function fetchForecast(city) {
-    const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${API_KEY}&units=metric`);
+    const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${API_KEY}&units=imperial`);
     const data = await response.json();
     displayForecast(data.list);
 }
@@ -59,7 +59,7 @@ function displayForecast(forecastData) {
             <div>
                 <h3>${new Date(data.dt_txt).toLocaleDateString()}</h3>
                 <img src="${weatherIconUrl}" alt="${data.weather[0].description}" class="weather-icon">
-                <p>Temperature: ${data.main.temp}°C</p>
+                <p>Temperature: ${data.main.temp}°F</p>
                 <p>Wind Speed: ${data.wind.speed} m/s</p>
                 <p>Humidity: ${data.main.humidity}%</p>
             </div>

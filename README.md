@@ -37,9 +37,9 @@
 
 - ![Screenshot-1](https://user-images.githubusercontent.com/66844643/229950668-c35549f1-e37d-468a-806a-4ca8bd791ede.png)
 
-- ![Screenshot-2](https://user-images.githubusercontent.com/66844643/229950794-81bc7d80-7665-4079-b8b6-99f713934805.png)
+- ![Screenshot-2](https://user-images.githubusercontent.com/66844643/229962849-9f14785d-285f-4e09-91fa-b91594f62bf9.png)
 
-- ![Screenshot-3](https://user-images.githubusercontent.com/66844643/229950837-a6074fa5-12b3-49d5-b5c0-6f7d4e376a7a.png)
+- ![Screenshot-3](https://user-images.githubusercontent.com/66844643/229962896-992a119e-7389-4edb-871f-335a1752dd9f.png)
 
 
 ## Contributing
